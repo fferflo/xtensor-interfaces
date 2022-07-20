@@ -8,6 +8,20 @@
 namespace xti {
 
 template <typename TTensor>
+struct is_xtensor
+{
+  template <typename TType>
+  static std::true_type deduce(const xt::xexpression<TType>&);
+
+  static std::false_type deduce(...);
+
+  static const bool value = decltype(deduce(std::declval<TTensor>()))::value;
+};
+
+template <typename TTensor>
+constexpr bool is_xtensor_v = is_xtensor<TTensor>::value;
+
+template <typename TTensor>
 struct has_data_ptr
 {
   template <typename TTensor2, typename = decltype(std::declval<TTensor2&>().data())>
