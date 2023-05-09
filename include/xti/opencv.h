@@ -3,7 +3,7 @@
 #include <xti/exception.h>
 #include <xti/adapt/span.h>
 #include <xti/adapt/closure.h>
-#include <opencv2/opencv.hpp>
+#include <opencv2/core.hpp>
 #include <xtensor/xtensor.hpp>
 #include <xtensor/xadapt.hpp>
 #include <xti/util.h>

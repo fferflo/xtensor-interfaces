@@ -32,7 +32,7 @@ install(
 ######################## INTERFACES ########################
 
 # OpenCV
-find_package(OpenCV QUIET)
+find_package(OpenCV QUIET COMPONENTS core)
 if(OpenCV_FOUND)
   add_library(opencv INTERFACE)
   target_link_libraries(opencv INTERFACE base ${OpenCV_LIBS})
@@ -63,6 +63,17 @@ if(cereal_FOUND)
     TARGETS cereal
     EXPORT install_targets
   )
+endif()
+
+message(STATUS "Built interfaces:")
+if(TARGET opencv)
+  message(STATUS "  - opencv")
+endif()
+if(TARGET eigen)
+  message(STATUS "  - eigen")
+endif()
+if(TARGET cereal)
+  message(STATUS "  - cereal")
 endif()
 
 
